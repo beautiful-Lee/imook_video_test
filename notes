@@ -1,0 +1,7 @@
+关于Git的操作笔记
+
+1.使用git init 来初始化代码仓库
+2.使用git status 来查看当前的git 仓库状态
+3.使用git clone 来克隆GitHub上面的代码
+4.使用git add 添加代码到临时文件（绿色的文件表示已被添加，红色的表示还没有）
+4.使用git commit -m 添加到本地代码仓库（-m添加描述）
