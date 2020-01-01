@@ -1,0 +1,58 @@
+<%inherit file="../base.html" />
+<%! from django.shortcuts import reverse %>
+<%! from app.model.model_video import IdentityType %>
+<%def name="css()">
+<link href="/static/dashboard/css/video_sub.css" rel="stylesheet">
+</%def>
+<%def name="content()">
+<h1>${video.name}</h1>
+
+<form class="form-horizontal edit-area add-video-area add-url" action="" method="POST">
+    ${csrf_token}
+    <label>添加地址:</label>
+    <input type="text" class="form-control" name="url">
+    <button class="btn btn_info">添加</button>
+</form>
+
+<form class="form-horizontal edit-area add-video-area add-url" action="${reverse('video_star')}" method="POST">
+    ${csrf_token}
+    <label>演员名称:</label>
+    <input type="text" class="form-control" name="name"><br/>
+    <label>身份类型:</label>
+    <select class="form-control" name="identity">
+        % for identity in IdentityType:
+        <option value="${identity.value}">${identity.label}</option>
+        % endfor
+    </select>
+    <input type="hidden" name="video_id" value="${video.id}">
+    <button class="btn btn_info">添加</button>
+</form>
+% if error:
+<span>${error}</span>
+% endif
+<span>视频链接</span>
+<table class="table">
+    <thead>
+    <tr>
+        <th>集数</th>
+        <th>视频链接</th>
+    </tr>
+    </thead>
+    <tbody>
+        % for video_sub in video.video_sub.all():
+        <tr>
+        <td>${video_sub.number}</td>
+            <td><a href="${video_sub.url}" >${video_sub.url}</a></td>
+        </tr>
+        % endfor
+    </tbody>
+</table>
+<span>演员</span>
+<ul>
+    % for video_star in video.video_star.all():
+    <li>${video_star.name}/${IdentityType(video_star.identity).label}</li>
+    % endfor
+</ul>
+</%def>
+
+

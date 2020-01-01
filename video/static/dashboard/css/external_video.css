@@ -1,0 +1,24 @@
+.open-btn {
+    margin-left: 35%;
+
+}
+
+.edit-area {
+    margin-left:15%;
+}
+
+.video-select {
+    display: inline-block;
+    width: 25%;
+}
+
+.video-images{
+    width: 130px;
+}
+
+.info {
+    width: 100px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

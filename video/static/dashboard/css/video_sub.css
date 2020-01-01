@@ -1,0 +1,9 @@
+input, select {
+    width: 30% !important;
+    display: inline-block !important;
+}
+
+.add-url{
+    width: 70%;
+    padding: 5px;
+}
